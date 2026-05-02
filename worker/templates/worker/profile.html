@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Worker Profile</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 50px auto;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            font-size: 28px;
+            color: #1c2b36;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #0f3b57;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f5f9fc;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 16px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 18px;
+            background: #dfe7ec;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #cfd8df;
+        }
+
+        .update-btn {
+            padding: 7px 14px;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .update-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+            color: white;
+        }
+
+        .available {
+            background-color: #28a745;
+        }
+
+        .not-available {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="/temp/worker/" class="back-btn">← Back to Dashboard</a>
+
+    <div class="header">
+        <h2>My Profile</h2>
+    </div>
+
+    <div class="card">
+
+        {% if ok %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Skill</th>
+                <th>Contact</th>
+                <th>Availability</th>
+                <th>Update</th>
+            </tr>
+
+            {% for i in ok %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.specialization }}</td>
+                <td>{{ i.skill }}</td>
+                <td>{{ i.contact }}</td>
+
+                <td>
+                    {{ i.availability }}
+                </td>
+
+                <td>
+                    <a href="/worker/update/{{ i.worker_id }}" class="update-btn">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% else %}
+            <div class="no-data">No profile data available.</div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

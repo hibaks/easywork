@@ -1,0 +1,240 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>update</title>#}
+{#</head>#}
+{#<body>#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    <table>#}
+{#        <tr>#}
+{#            <td>Name</td>#}
+{#            <td><input type="text" name="name" value="{{ ok.name }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Specification</td>#}
+{#            <td><input type="text" name="sp" value="{{ ok.specialization }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Skill</td>#}
+{#            <td><input type="text" name="sk" value="{{ ok.skill }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Contact</td>#}
+{#            <td><input type="text" name="co" value="{{ ok.contact }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Availability</td>#}
+{#            <td><input type="text" name="av" value="{{ ok.availability }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Username</td>#}
+{#            <td><input type="text" name="uu" value="{{ ok.username }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>Password</td>#}
+{#            <td><input type="text" name="pp" value="{{ ok.password }}"></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{##}
+{#            <td><input type="submit" value="Update"></td>#}
+{#        </tr>#}
+{#    </table>#}
+{##}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0B3B5C;
+            --primary-light: #1E4F6E;
+            --light: #F4F7F9;
+            --gray-light: #B0BEC5;
+            --dark: #1A1E24;
+            --box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--box-shadow);
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .page-header h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--gray-light);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        input[type="submit"] {
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            padding: 10px 20px;
+            width: auto;
+        }
+
+        input[type="submit"]:hover {
+            background: var(--primary-light);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background: #1A1E24;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Back Button -->
+    <a href="/temp/worker/" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h2>
+            <i class="fas fa-user-edit"></i>
+            Update Worker Details
+        </h2>
+    </div>
+
+    <!-- Form -->
+    <div class="form-box">
+        <form method="post">
+            {% csrf_token %}
+
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" value="{{ ok.name }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Specification</td>
+                    <td><input type="text" name="sp" value="{{ ok.specialization }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Skill</td>
+                    <td><input type="text" name="sk" value="{{ ok.skill }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" name="co" value="{{ ok.contact }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Availability</td>
+                    <td><input type="text" name="av" value="{{ ok.availability }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="uu" value="{{ ok.username }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" name="pp" value="{{ ok.password }}"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Update">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+
+</div>
+
+{#<footer>#}
+{#    <p>© 2025 SCMS - Service Centre Management System</p>#}
+{#</footer>#}
+
+</body>
+</html>
